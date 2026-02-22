@@ -154,5 +154,16 @@ export function registerLightSchemeCommands(plugin: MinimalTheme) {
       plugin.updateLightStyle();
     }
   });
+
+  plugin.addCommand({
+    id: 'toggle-minimal-shades-of-purple-light',
+    name: 'Switch light color scheme to Shades of Purple (light)',
+    callback: () => {
+      plugin.settings.lightScheme = 'minimal-shades-of-purple-light';
+      plugin.saveData(plugin.settings);
+      plugin.updateLightScheme();
+      plugin.updateLightStyle();
+    }
+  });
 }
 

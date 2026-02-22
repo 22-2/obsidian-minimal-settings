@@ -165,5 +165,16 @@ export function registerDarkSchemeCommands(plugin: MinimalTheme) {
       plugin.updateDarkStyle();
     }
   });
+
+  plugin.addCommand({
+    id: 'toggle-minimal-shades-of-purple-dark',
+    name: 'Switch dark color scheme to Shades of Purple (dark)',
+    callback: () => {
+      plugin.settings.darkScheme = 'minimal-shades-of-purple-dark';
+      plugin.saveData(plugin.settings);
+      plugin.updateDarkScheme();
+      plugin.updateDarkStyle();
+    }
+  });
 }
 

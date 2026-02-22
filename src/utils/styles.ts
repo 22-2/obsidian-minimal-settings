@@ -132,6 +132,7 @@ export function removeDarkScheme() {
     'minimal-nord-dark',
     'minimal-notion-dark',
     'minimal-rose-pine-dark',
+    'minimal-shades-of-purple-dark',
     'minimal-solarized-dark',
     'minimal-things-dark'
   );
@@ -151,6 +152,7 @@ export function removeLightScheme() {
     'minimal-nord-light',
     'minimal-notion-light',
     'minimal-rose-pine-light',
+    'minimal-shades-of-purple-light',
     'minimal-solarized-light',
     'minimal-things-light'
   );
