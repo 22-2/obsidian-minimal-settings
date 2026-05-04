@@ -1,17 +1,22 @@
 import { App } from 'obsidian';
 import { MinimalSettings } from '../settings';
 
+const cssVarNames = [
+  '--font-ui-small',
+  '--line-height',
+  '--line-width',
+  '--line-width-wide',
+  '--max-width',
+  '--font-editor-override',
+];
+
 export function loadRules() {
-  const css = document.createElement('style');
-  css.id = 'minimal-theme';
-  document.getElementsByTagName("head")[0].appendChild(css);
   document.body.classList.add('minimal-theme');
 }
 
 export function unloadRules() {
-  const styleElement = document.getElementById('minimal-theme');
-  if (styleElement) {
-    styleElement.parentNode?.removeChild(styleElement);
+  for (const name of cssVarNames) {
+    document.body.style.removeProperty(name);
   }
   document.body.classList.remove('minimal-theme');
 }
@@ -36,7 +41,6 @@ export function updateStyle(settings: MinimalSettings) {
   document.body.classList.toggle('links-ext-on', settings.underlineExternal);
   document.body.classList.toggle('full-width-media', settings.fullWidthMedia);
   document.body.classList.toggle('img-grid', settings.imgGrid);
-  document.body.classList.toggle('minimal-dev-block-width', settings.devBlockWidth);
   document.body.classList.toggle('minimal-status-off', !settings.minimalStatus);
   document.body.classList.toggle('full-file-names', !settings.trimNames);
   document.body.classList.toggle('labeled-nav', settings.labeledNav);
@@ -50,18 +54,14 @@ export function updateStyle(settings: MinimalSettings) {
     settings.mapWidth
   );
 
-  const el = document.getElementById('minimal-theme');
-  if (!el) throw "minimal-theme element not found!";
-  else {
-    el.innerText = 
-      'body.minimal-theme{'
-      + '--font-ui-small:' + settings.textSmall + 'px;'
-      + '--line-height:' + settings.lineHeight + ';'
-      + '--line-width:' + settings.lineWidth + 'rem;'
-      + '--line-width-wide:' + settings.lineWidthWide + 'rem;'
-      + '--max-width:' + settings.maxWidth + '%;'
-      + '--font-editor-override:' + settings.editorFont + ';';
-  }
+  document.body.setCssProps({
+    '--font-ui-small': `${settings.textSmall}px`,
+    '--line-height': `${settings.lineHeight}`,
+    '--line-width': `${settings.lineWidth}rem`,
+    '--line-width-wide': `${settings.lineWidthWide}rem`,
+    '--max-width': `${settings.maxWidth}%`,
+    '--font-editor-override': settings.editorFont,
+  });
 }
 
 export function removeSettings() {
@@ -75,7 +75,6 @@ export function removeSettings() {
     'links-ext-on',
     'full-width-media',
     'img-grid',
-    'minimal-dev-block-width',
     'minimal-status-off',
     'full-file-names',
     'labeled-nav',

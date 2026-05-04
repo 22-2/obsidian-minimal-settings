@@ -19,7 +19,6 @@ export interface MinimalSettings {
   lineWidthWide: number;
   maxWidth: number;
   imgGrid: boolean;
-  devBlockWidth: boolean;
   tableWidth: string;
   iframeWidth: string;
   imgWidth: string;
@@ -68,7 +67,6 @@ export const DEFAULT_SETTINGS: MinimalSettings = {
   folding: true,
   lineNumbers: false,
   readableLineLength: false,
-  devBlockWidth: false,
 }
 
 export class MinimalSettingsTab extends PluginSettingTab {
@@ -84,7 +82,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
     containerEl.empty();
 
     // Color scheme section
-    const colorSchemeDesc = document.createDocumentFragment();
+    const colorSchemeDesc = createFragment();
     colorSchemeDesc.appendText('For more options, use the ');
     colorSchemeDesc.appendChild(
       createEl('a', {
@@ -95,13 +93,13 @@ export class MinimalSettingsTab extends PluginSettingTab {
     colorSchemeDesc.appendText(' plugin. See ');
     colorSchemeDesc.appendChild(
       createEl('a', {
-        text: 'documentation',
+        text: 'Documentation',
         href: 'https://minimal.guide/features/color-schemes',
       })
     );
     colorSchemeDesc.appendText(' for details.');
 
-    const colorHeading = document.createDocumentFragment();
+    const colorHeading = createFragment();
     colorHeading.createDiv({cls: 'setting-item-name', text: 'Color scheme'});
     const colorDesc = colorHeading.createDiv({cls: 'setting-item-description'});
     colorDesc.appendChild(colorSchemeDesc);
@@ -130,7 +128,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue(this.plugin.settings.lightScheme)
           .onChange((value) => {
             this.plugin.settings.lightScheme = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.updateLightScheme();
           })))
       .addSetting(setting => setting
@@ -144,7 +142,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue(this.plugin.settings.lightStyle)
           .onChange((value) => {
             this.plugin.settings.lightStyle = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.updateLightStyle();
           })))
       .addSetting(setting => setting
@@ -170,7 +168,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue(this.plugin.settings.darkScheme)
           .onChange((value) => {
             this.plugin.settings.darkScheme = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.updateDarkScheme();
           })))
       .addSetting(setting => setting
@@ -183,7 +181,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue(this.plugin.settings.darkStyle)
           .onChange((value) => {
             this.plugin.settings.darkStyle = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.updateDarkStyle();
           })));
 
@@ -196,7 +194,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.labeledNav)
           .onChange((value) => {
             this.plugin.settings.labeledNav = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -205,7 +203,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.colorfulFrame)
           .onChange((value) => {
             this.plugin.settings.colorfulFrame = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -214,7 +212,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.colorfulActiveStates)
           .onChange((value) => {
             this.plugin.settings.colorfulActiveStates = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -223,7 +221,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.colorfulHeadings)
           .onChange((value) => {
             this.plugin.settings.colorfulHeadings = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -232,7 +230,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.minimalStatus)
           .onChange((value) => {
             this.plugin.settings.minimalStatus = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -241,7 +239,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.trimNames)
           .onChange((value) => {
             this.plugin.settings.trimNames = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -250,7 +248,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.bordersToggle)
           .onChange((value) => {
             this.plugin.settings.bordersToggle = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -259,7 +257,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.focusMode)
           .onChange((value) => {
             this.plugin.settings.focusMode = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -268,7 +266,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.underlineInternal)
           .onChange((value) => {
             this.plugin.settings.underlineInternal = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -277,7 +275,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.underlineExternal)
           .onChange((value) => {
             this.plugin.settings.underlineExternal = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -286,22 +284,22 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.fullWidthMedia)
           .onChange((value) => {
             this.plugin.settings.fullWidthMedia = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })));
 
     // Layout section
-    const layoutDesc = document.createDocumentFragment();
+    const layoutDesc = createFragment();
     layoutDesc.appendText('These options can also be defined per file. See ');
     layoutDesc.appendChild(
       createEl('a', {
-        text: 'documentation',
+        text: 'Documentation',
         href: 'https://minimal.guide/features/block-width',
       })
     );
     layoutDesc.appendText(' for details.');
 
-    const layoutHeading = document.createDocumentFragment();
+    const layoutHeading = createFragment();
     layoutHeading.createDiv({cls: 'setting-item-name', text: 'Layout'});
     const layoutDescDiv = layoutHeading.createDiv({cls: 'setting-item-description'});
     layoutDescDiv.appendChild(layoutDesc);
@@ -314,7 +312,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
         .addToggle(toggle => toggle.setValue(this.plugin.settings.imgGrid)
           .onChange((value) => {
             this.plugin.settings.imgGrid = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -328,7 +326,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue(this.plugin.settings.chartWidth)
           .onChange((value) => {
             this.plugin.settings.chartWidth = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -342,7 +340,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue(this.plugin.settings.iframeWidth)
           .onChange((value) => {
             this.plugin.settings.iframeWidth = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -356,7 +354,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue(this.plugin.settings.imgWidth)
           .onChange((value) => {
             this.plugin.settings.imgWidth = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -370,7 +368,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue(this.plugin.settings.mapWidth)
           .onChange((value) => {
             this.plugin.settings.mapWidth = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -384,7 +382,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue(this.plugin.settings.tableWidth)
           .onChange((value) => {
             this.plugin.settings.tableWidth = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })));
 
@@ -398,7 +396,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue((this.plugin.settings.textNormal || '') + '')
           .onChange((value) => {
             this.plugin.settings.textNormal = parseFloat(value);
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.setFontSize();
           })))
       .addSetting(setting => setting
@@ -408,7 +406,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue((this.plugin.settings.textSmall || '') + '')
           .onChange((value) => {
             this.plugin.settings.textSmall = parseFloat(value);
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -418,7 +416,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue((this.plugin.settings.lineHeight || '') + '')
           .onChange((value) => {
             this.plugin.settings.lineHeight = parseFloat(value);
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -428,7 +426,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue((this.plugin.settings.lineWidth || '') + '')
           .onChange((value) => {
             this.plugin.settings.lineWidth = parseInt(value.trim());
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -438,7 +436,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue((this.plugin.settings.lineWidthWide || '') + '')
           .onChange((value) => {
             this.plugin.settings.lineWidthWide = parseInt(value.trim());
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
@@ -448,17 +446,17 @@ export class MinimalSettingsTab extends PluginSettingTab {
           .setValue((this.plugin.settings.maxWidth || '') + '')
           .onChange((value) => {
             this.plugin.settings.maxWidth = parseInt(value.trim());
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })))
       .addSetting(setting => setting
         .setName('Editor font')
-        .setDesc('Overrides the text font defined in Obsidian Appearance settings when in edit mode.')
+        .setDesc('Overrides the text font defined in Obsidian appearance settings when in edit mode.')
         .addText(text => text.setPlaceholder('')
           .setValue((this.plugin.settings.editorFont || '') + '')
           .onChange((value) => {
             this.plugin.settings.editorFont = value;
-            this.plugin.saveData(this.plugin.settings);
+            void this.plugin.saveData(this.plugin.settings);
             this.plugin.refresh();
           })));
   }

@@ -35,7 +35,6 @@ export default class MinimalTheme extends Plugin {
   }
 
   onunload() {
-    console.log('Unloading Minimal Theme Settings plugin');
     const sidebarEl = document.getElementsByClassName('mod-left-split')[0];
     if (sidebarEl) {
       sidebarEl.removeClass('theme-dark');
@@ -73,31 +72,25 @@ export default class MinimalTheme extends Plugin {
       // @ts-ignore
       if (this.app.vault.getConfig('foldHeading')) {
         this.settings.folding = true;
-        console.log('Folding is on');
         folding = true;
       } else {
         this.settings.folding = false;
-        console.log('Folding is off');
       }
 
       // @ts-ignore
       if (this.app.vault.getConfig('showLineNumber')) {
         this.settings.lineNumbers = true;
-        console.log('Line numbers are on');
         lineNumbers = true;
       } else {
         this.settings.lineNumbers = false;
-        console.log('Line numbers are off');
       }
 
       // @ts-ignore
       if (this.app.vault.getConfig('readableLineLength')) {
         this.settings.readableLineLength = true;
-        console.log('Readable line length is on');
         readableLineLength = true;
       } else {
         this.settings.readableLineLength = false;
-        console.log('Readable line length is off');
       }
 
       const bodyClassList = document.body.classList;
@@ -106,7 +99,7 @@ export default class MinimalTheme extends Plugin {
       bodyClassList.toggle('minimal-readable', readableLineLength);
       bodyClassList.toggle('minimal-readable-off', !readableLineLength);
 
-      this.saveData(this.settings);
+      void this.saveData(this.settings);
     };
 
     const sidebarUpdateCallback = () => {
