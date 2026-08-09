@@ -117,6 +117,7 @@ export function removeStyle() {
 export function removeDarkScheme() {
   document.body.removeClass(
     'minimal-atom-dark',
+    'minimal-arc-blueberry-dark',
     'minimal-ayu-dark',
     'minimal-catppuccin-dark',
     'minimal-default-dark',

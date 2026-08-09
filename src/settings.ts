@@ -180,6 +180,7 @@ export class MinimalSettingsTab extends PluginSettingTab {
               options: {
                 'minimal-default-dark': 'Default',
                 'minimal-atom-dark': 'Atom',
+                'minimal-arc-blueberry-dark': 'Arc Blueberry',
                 'minimal-ayu-dark': 'Ayu',
                 'minimal-catppuccin-dark': 'Catppuccin',
                 'minimal-dracula-dark': 'Dracula',

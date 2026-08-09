@@ -2,6 +2,17 @@ import MinimalTheme from '../main';
 
 export function registerDarkSchemeCommands(plugin: MinimalTheme) {
   plugin.addCommand({
+    id: 'toggle-minimal-arc-blueberry-dark',
+    name: 'Switch dark color scheme to Arc Blueberry (dark)',
+    callback: () => {
+      plugin.settings.darkScheme = 'minimal-arc-blueberry-dark';
+      void plugin.saveData(plugin.settings);
+      plugin.updateDarkScheme();
+      plugin.updateDarkStyle();
+    }
+  });
+
+  plugin.addCommand({
     id: 'toggle-minimal-atom-dark',
     name: 'Switch dark color scheme to Atom (dark)',
     callback: () => {
