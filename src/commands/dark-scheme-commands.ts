@@ -35,6 +35,105 @@ export function registerDarkSchemeCommands(plugin: MinimalTheme) {
   });
 
   plugin.addCommand({
+    id: 'toggle-minimal-bearded-aquarelle-hydrangea-dark',
+    name: 'Switch dark color scheme to Bearded Theme Aquarelle Hydrangea (dark)',
+    callback: () => {
+      plugin.settings.darkScheme = 'minimal-bearded-aquarelle-hydrangea-dark';
+      void plugin.saveData(plugin.settings);
+      plugin.updateDarkScheme();
+      plugin.updateDarkStyle();
+    }
+  });
+
+  plugin.addCommand({
+    id: 'toggle-minimal-bearded-black-amethyst-soft-dark',
+    name: 'Switch dark color scheme to Bearded Theme Black & Amethyst Soft (dark)',
+    callback: () => {
+      plugin.settings.darkScheme = 'minimal-bearded-black-amethyst-soft-dark';
+      void plugin.saveData(plugin.settings);
+      plugin.updateDarkScheme();
+      plugin.updateDarkStyle();
+    }
+  });
+
+  plugin.addCommand({
+    id: 'toggle-minimal-bearded-black-emerald-dark',
+    name: 'Switch dark color scheme to Bearded Theme Black & Emerald (dark)',
+    callback: () => {
+      plugin.settings.darkScheme = 'minimal-bearded-black-emerald-dark';
+      void plugin.saveData(plugin.settings);
+      plugin.updateDarkScheme();
+      plugin.updateDarkStyle();
+    }
+  });
+
+  plugin.addCommand({
+    id: 'toggle-minimal-bearded-black-gold-dark',
+    name: 'Switch dark color scheme to Bearded Theme Black & Gold (dark)',
+    callback: () => {
+      plugin.settings.darkScheme = 'minimal-bearded-black-gold-dark';
+      void plugin.saveData(plugin.settings);
+      plugin.updateDarkScheme();
+      plugin.updateDarkStyle();
+    }
+  });
+
+  plugin.addCommand({
+    id: 'toggle-minimal-bearded-black-ruby-dark',
+    name: 'Switch dark color scheme to Bearded Theme Black & Ruby (dark)',
+    callback: () => {
+      plugin.settings.darkScheme = 'minimal-bearded-black-ruby-dark';
+      void plugin.saveData(plugin.settings);
+      plugin.updateDarkScheme();
+      plugin.updateDarkStyle();
+    }
+  });
+
+  plugin.addCommand({
+    id: 'toggle-minimal-bearded-coffee-dark',
+    name: 'Switch dark color scheme to Bearded Theme Coffee (dark)',
+    callback: () => {
+      plugin.settings.darkScheme = 'minimal-bearded-coffee-dark';
+      void plugin.saveData(plugin.settings);
+      plugin.updateDarkScheme();
+      plugin.updateDarkStyle();
+    }
+  });
+
+  plugin.addCommand({
+    id: 'toggle-minimal-bearded-hc-wonderland-wood-dark',
+    name: 'Switch dark color scheme to Bearded Theme HC Wonderland Wood (dark)',
+    callback: () => {
+      plugin.settings.darkScheme = 'minimal-bearded-hc-wonderland-wood-dark';
+      void plugin.saveData(plugin.settings);
+      plugin.updateDarkScheme();
+      plugin.updateDarkStyle();
+    }
+  });
+
+  plugin.addCommand({
+    id: 'toggle-minimal-bearded-themanopia-dark',
+    name: 'Switch dark color scheme to Bearded Themanopia (Experimental) (dark)',
+    callback: () => {
+      plugin.settings.darkScheme = 'minimal-bearded-themanopia-dark';
+      void plugin.saveData(plugin.settings);
+      plugin.updateDarkScheme();
+      plugin.updateDarkStyle();
+    }
+  });
+
+  plugin.addCommand({
+    id: 'toggle-minimal-bearded-vivid-purple-dark',
+    name: 'Switch dark color scheme to Bearded Theme Vivid Purple (dark)',
+    callback: () => {
+      plugin.settings.darkScheme = 'minimal-bearded-vivid-purple-dark';
+      void plugin.saveData(plugin.settings);
+      plugin.updateDarkScheme();
+      plugin.updateDarkStyle();
+    }
+  });
+
+  plugin.addCommand({
     id: 'toggle-minimal-catppuccin-dark',
     name: 'Switch dark color scheme to Catppuccin (dark)',
     callback: () => {
@@ -127,6 +226,17 @@ export function registerDarkSchemeCommands(plugin: MinimalTheme) {
     name: 'Switch dark color scheme to Nord (dark)',
     callback: () => {
       plugin.settings.darkScheme = 'minimal-nord-dark';
+      void plugin.saveData(plugin.settings);
+      plugin.updateDarkScheme();
+      plugin.updateDarkStyle();
+    }
+  });
+
+  plugin.addCommand({
+    id: 'toggle-minimal-one-dark-pro-dark',
+    name: 'Switch dark color scheme to One Dark Pro (dark)',
+    callback: () => {
+      plugin.settings.darkScheme = 'minimal-one-dark-pro-dark';
       void plugin.saveData(plugin.settings);
       plugin.updateDarkScheme();
       plugin.updateDarkStyle();
